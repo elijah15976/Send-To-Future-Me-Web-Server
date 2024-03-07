@@ -1,0 +1,60 @@
+.label-input{
+  display:flex;
+  margin:20px;
+  flex-direction:column;
+  flex:1;
+}
+
+.label-input input{
+  padding:5px;
+}
+
+.labeling{
+  text-align:left;
+}
+
+.level{
+  display:flex;
+}
+
+#send-form{
+  margin:15px;
+  text-align:center;
+  max-width:800px;
+  display:flex;
+  flex-direction:column;
+  flex-wrap:wrap;
+}
+
+#send-form div{
+  margin-left:70px;
+  margin-right:70px;
+}
+
+#send-form *{
+  border-radius:10px;
+}
+
+#msg{
+  width:502px;
+  height:250px;
+  resize:none;
+}
+
+#schedule-button{
+  justify-content:center;
+  align-items:center;
+}
+
+#schedule-button button{
+  background-color:#ffffff;
+  padding:10px;
+  padding-left:40px !important;
+  padding-right:40px !important;
+  transition:0.2s;
+}
+
+#schedule-button button:active{
+  background-color:#c7c7c7;
+  transition:0s;
+}

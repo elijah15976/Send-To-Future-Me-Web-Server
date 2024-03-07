@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Send To Future Me</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <link href="/private.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <script src="/script.js"></script>
+    <script src="/private.js"></script>
+  </head>
+  <body onload="init()">
+    <header>
+      <div id="account-div">
+        <a id="account">Account</a>
+        <div id="account-dropdown">
+          <p onclick="logOut()">Log Out</p>
+        </div>
+      </div>
+      <h1>Send To Future Me</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/database">Database</a>
+        <a href="/send">Send Email</a>
+        <a href="/private">Private Messages</a>
+      </nav>
+    </header>
+
+    <div id="database-header">
+      <h2>Private Database</h2>
+    </div>
+
+    <div id="output">
+    </div>
+  </body>
+</html>

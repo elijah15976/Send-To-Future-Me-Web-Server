@@ -1,0 +1,60 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGBUS (0x7) at pc=0x00007f3b3b2ef808, pid=49, tid=219
+#
+# JRE version: OpenJDK Runtime Environment GraalVM CE 22.1.0 (17.0.3+7) (build 17.0.3+7-jvmci-22.1-b06)
+# Java VM: OpenJDK 64-Bit Server VM GraalVM CE 22.1.0 (17.0.3+7-jvmci-22.1-b06, mixed mode, sharing, tiered, jvmci, jvmci compiler, compressed oops, compressed class ptrs, g1 gc, linux-amd64)
+# Problematic frame:
+# V  [libjvm.so+0x784808]  HSpaceCounters::update_used(unsigned long)+0x8
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -- %E" (or dumping to /home/runner/Send-To-Future-Me/core.49)
+#
+# If you would like to submit a bug report, please visit:
+#   https://github.com/oracle/graal/issues
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:ThreadPriorityPolicy=1 -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions Main
+
+Host: AMD EPYC 7B12, 4 cores, 31G, Ubuntu 20.04.2 LTS
+Time: Thu Dec  7 03:16:40 2023 UTC elapsed time: 32540.135065 seconds (0d 9h 2m 20s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f3acc0c1190):  JavaThread "HttpClient-36-Worker-0" daemon [_thread_in_vm, id=219, stack(0x00007f3ac1d00000,0x00007f3ac1e00000)]
+
+Stack: [0x00007f3ac1d00000,0x00007f3ac1e00000],  sp=0x00007f3ac1dfd338,  free space=1012k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x784808]  HSpaceCounters::update_used(unsigned long)+0x8
+V  [libjvm.so+0x6bfcad]  G1CollectedHeap::attempt_allocation_slow(unsigned long)+0x57d
+V  [libjvm.so+0x6c0518]  G1CollectedHeap::allocate_new_tlab(unsigned long, unsigned long, unsigned long*)+0x108
+V  [libjvm.so+0xb4c54e]  MemAllocator::allocate_inside_tlab_slow(MemAllocator::Allocation&) const+0x1ee
+V  [libjvm.so+0xb4c8a7]  MemAllocator::allocate() const+0x117
+V  [libjvm.so+0x7d3981]  InstanceKlass::allocate_instance(JavaThread*)+0x41
+V  [libjvm.so+0x985ad3]  JVMCIRuntime::new_instance_common(JavaThread*, Klass*, bool)+0x323
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+v  ~RuntimeStub::Stub<new_instance_or_null(KlassPointer)Object>
+J 2366 jvmci java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; java.base@17.0.3 (300 bytes) @ 0x00007f3b231e5bf5 [0x00007f3b231e5400+0x00000000000007f5]
+J 1999 jvmci java.util.AbstractCollection.addAll(Ljava/util/Collection;)Z java.base@17.0.3 (42 bytes) @ 0x00007f3b231b2384 [0x00007f3b231b2180+0x0000000000000204]
+J 2099 jvmci sun.security.ssl.SSLAlgorithmDecomposer.decompose(Ljava/lang/String;)Ljava/util/Set; java.base@17.0.3 (67 bytes) @ 0x00007f3b231b91f8 [0x00007f3b231b8e00+0x00000000000003f8]
+J 1998 jvmci sun.security.util.AbstractAlgorithmConstraints.checkAlgorithm(Ljava/util/Set;Ljava/lang/String;Lsun/security/util/AlgorithmDecomposer;)Z java.base@17.0.3 (87 bytes) @ 0x00007f3b231b0a0e [0x00007f3b231b07c0+0x000000000000024e]
+J 2476 jvmci sun.security.ssl.SSLAlgorithmConstraints.permits(Ljava/util/Set;Ljava/lang/String;Ljava/security/AlgorithmParameters;)Z java.base@17.0.3 (96 bytes) @ 0x00007f3b231f1c30 [0x00007f3b231f1ae0+0x0000000000000150]
+J 1930 c1 sun.security.ssl.HandshakeContext.isActivatable(Lsun/security/ssl/CipherSuite;Ljava/security/AlgorithmConstraints;Ljava/util/Map;)Z java.base@17.0.3 (281 bytes) @ 0x00007f3b1bf869e4 [0x00007f3b1bf865a0+0x0000000000000444]
+j  sun.security.ssl.HandshakeContext.getActiveCipherSuites(Ljava/util/List;Ljava/util/List;Ljava/security/AlgorithmConstraints;)Ljava/util/List;+124 java.base@17.0.3
+j  sun.security.ssl.HandshakeContext.<init>(Lsun/security/ssl/SSLContextImpl;Lsun/security/ssl/TransportContext;)V+183 java.base@17.0.3
+j  sun.security.ssl.ClientHandshakeContext.<init>(Lsun/security/ssl/SSLContextImpl;Lsun/security/ssl/TransportContext;)V+3 java.base@17.0.3
+j  sun.security.ssl.TransportContext.kickstart()V+137 java.base@17.0.3
+j  sun.security.ssl.SSLEngineImpl.writeRecord([Ljava/nio/ByteBuffer;II[Ljava/nio/ByteBuffer;II)Ljavax/net/ssl/SSLEngineResult;+117 java.base@17.0.3
+j  sun.security.ssl.SSLEngineImpl.wrap([Ljava/nio/ByteBuffer;II[Ljava/nio/ByteBuffer;II)Ljavax/net/ssl/SSLEngineResult;+53 java.base@17.0.3
+j  sun.security.ssl.SSLEngineImpl.wrap([Ljava/nio/ByteBuffer;IILjava/nio/ByteBuffer;)Ljavax/net/ssl/SSLEngineResult;+15 java.base@17.0.3
+j  javax.net.ssl.SSLEngine.wrap([Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)Ljavax/net/ssl/SSLEngineResult;+20 java.base@17.0.3
+j  jdk.internal.net.http.common.SSLFlowDelegate$Writer.wrapBuffers([Ljava/nio/ByteBuffer;)Ljdk/internal/net/http/common/SSLFlowDelegate$EngineResult;+131 java.net.http@17.0.3
+j  jdk.internal.net.http.common.SSLFlowDelegate$Writer.processData()V+90 java.net.http@17.0.3
+j  jdk.internal.net.http.common.SSLFlowDelegate$Writer$WriterDownstreamPusher.run()V+4 java.net.http@17.0.3
+J 2159 c1 jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(Ljdk/internal/net/http/common/SequentialScheduler$DeferredCompleter;)V java.net.http@17.0.3 (19 bytes) @ 0x00007f3b1bff8e44 [0x00007f3b1bff8be0+0x0000000000000264]
+J 1979 c1 jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(Ljdk/internal/net/http/common/SequentialScheduler$SchedulableTask;Ljava/util/concurrent/Executor;)V java.net.http@17.0.3 (100 bytes) @ 0x00007f3b1bf9dacc [0x00007f3b1bf9d560+0x000000000000056c]
+J 2209 c1 jdk.internal.net.http.common.SequentialScheduler.runOrSchedule()V java.net.http@17.0.3 (10 bytes) @ 0x00007f3b1c01f844 [0x00007f3b1c01f7c0+0x0000000000000084]
+j  jdk.internal.net.http.common.SSLFlowDelegate$Writer.incoming(Ljava/util/List;Z)V

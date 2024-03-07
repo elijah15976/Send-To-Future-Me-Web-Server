@@ -1,0 +1,22 @@
+#database-header{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#database-header h2{
+  text-decoration:underline;
+  letter-spacing:2px;
+  font-size:40px;
+  transition:0.3s ease-in-out;
+}
+
+#database-header h2:hover{
+  letter-spacing:3px;
+}
+
+.infoCard{
+  margin:25px;
+  padding:25px;
+  cursor:pointer;
+}
