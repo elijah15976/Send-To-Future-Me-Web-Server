@@ -5,6 +5,7 @@ import com.sun.net.httpserver.HttpExchange;
 //https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
 public class ManagerCookie{
   private static Logger lg = new Logger();
+  //Change the variable below to your URL
   private static String url = "send-to-future-me.elijah15976.repl.co";
   public static String getValue(HttpExchange exchange, String key){
     String cook;
